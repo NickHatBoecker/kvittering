@@ -47,6 +47,7 @@ export default {
 
         const permissions = [
             Permission.read(permittedUser),
+            Permission.update(permittedUser),
             Permission.delete(permittedUser),
         ]
 
