@@ -1,5 +1,7 @@
+const publicPath = process.env.NODE_ENV === 'production' ? '/kvittering/' : '/'
+
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production' ? '/kvittering/' : '/',
+    publicPath,
     css: {
         loaderOptions: {
             scss: {
@@ -18,11 +20,11 @@ module.exports = {
         },
         manifestOptions: {
             icons: [
-                { src: "/favicon.ico", type: "image/x-icon", sizes: "16x16 32x32" },
-                { src: "/icon-192.png", type: "image/png", sizes: "192x192" },
-                { src: "/icon-512.png", type: "image/png", sizes: "512x512" },
-                { src: "/icon-192-maskable.png", type: "image/png", sizes: "192x192", purpose: "maskable" },
-                { src: "/icon-512-maskable.png", type: "image/png", sizes: "512x512", purpose: "maskable" },
+                { src: `${publicPath}favicon.ico`, type: 'image/x-icon', sizes: '16x16 32x32' },
+                { src: `${publicPath}icon-192.png`, type: 'image/png', sizes: '192x192' },
+                { src: `${publicPath}icon-512.png`, type: 'image/png', sizes: '512x512' },
+                { src: `${publicPath}icon-192-maskable.png`, type: 'image/png', sizes: '192x192', purpose: 'maskable' },
+                { src: `${publicPath}icon-512-maskable.png`, type: 'image/png', sizes: '512x512', purpose: 'maskable' },
             ],
         },
     },
