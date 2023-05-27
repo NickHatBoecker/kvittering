@@ -64,9 +64,10 @@ export default {
         return await storage.getFileView(BUCKET_ID, id)
     },
 
-    getFileThumb: async () => {
-        // return await storage.getFilePreview(BUCKET_ID, id)
-        return 'https://placekitten.com/g/300/450' // @TODO
+    getFileThumb: async (id) => {
+        const { href } = await storage.getFilePreview(BUCKET_ID, id)
+
+        return href
     },
 
     uploadFile: async (file) => {

@@ -103,13 +103,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$image-height: 427px;
-
 .document-thumb {
     height: 100%;
 
     .card-img-top {
         position: relative;
+        object-fit: cover;
+        width: 100%;
+        height: $document-height;
     }
 
     .view-overlay {
@@ -118,7 +119,7 @@ $image-height: 427px;
         align-items: center;
         background: rgba($secondary-color, 0.5);
         position: absolute;
-        height: $image-height;
+        height: $document-height;
         top: 0;
         left: 0;
         right: 0;
