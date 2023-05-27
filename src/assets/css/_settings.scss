@@ -1,0 +1,19 @@
+@import "./settings/colors";
+@import "./settings/variables";
+@import "./settings/bootstrap-variables";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+$theme-colors: map-merge($theme-colors, (
+    "secondary": $secondary-color,
+));
+
+
+/**
+ * Tools: Required for other layers, such as mixins, functions.
+ *
+ * Do no output any css, here.
+ */
+@import "~bootstrap/scss/mixins";
+@import "./settings/mixins";
+@import "./tools/functions";

@@ -1,0 +1,41 @@
+/**
+ * The default spacing utilities for margin and padding.
+ *
+ * Creates breakpoint independent versions (.mt-1, ...)
+ * and lg-up versions (.mt-1@lg, ...).
+ */
+@each $breakpoint in (xs, sm, md, lg) {
+    $suffix: breakpoint-suffix($breakpoint);
+
+    @include media-breakpoint-up($breakpoint) {
+        @each $prop, $abbrev in (margin: m, padding: p) {
+            @each $size, $length in $spacing-map {
+                @if $abbrev != p or $length != auto {
+                    .#{$abbrev}-#{$size}#{$suffix} {
+                        #{$prop}: $length !important;
+                    }
+
+                    .#{$abbrev}t-#{$size}#{$suffix},
+                    .#{$abbrev}y-#{$size}#{$suffix} {
+                        #{$prop}-top: $length !important;
+                    }
+
+                    .#{$abbrev}r-#{$size}#{$suffix},
+                    .#{$abbrev}x-#{$size}#{$suffix} {
+                        #{$prop}-right: $length !important;
+                    }
+
+                    .#{$abbrev}b-#{$size}#{$suffix},
+                    .#{$abbrev}y-#{$size}#{$suffix} {
+                        #{$prop}-bottom: $length !important;
+                    }
+
+                    .#{$abbrev}l-#{$size}#{$suffix},
+                    .#{$abbrev}x-#{$size}#{$suffix} {
+                        #{$prop}-left: $length !important;
+                    }
+                }
+            }
+        }
+    }
+}

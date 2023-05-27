@@ -1,0 +1,29 @@
+$spacing-unit-3: 3px;
+$spacing-unit-6: 6px;
+$spacing-unit-12: 12px;
+$spacing-unit-18: 18px;
+$spacing-unit-24: 24px;
+$spacing-unit-36: 36px;
+$spacing-unit-48: 48px;
+$spacing-unit-56: 56px;
+$spacing-unit-56: 56px;
+$spacing-unit-74: 74px;
+
+/* stylelint-disable function-comma-space-after */
+$spacing-map: () !default;
+$spacing-map: map-merge(
+        (
+            0: 0,
+            3: $spacing-unit-3,
+            6: $spacing-unit-6,
+            12: $spacing-unit-12,
+            18: $spacing-unit-18,
+            24: $spacing-unit-24,
+            36: $spacing-unit-36,
+            48: $spacing-unit-48,
+            56: $spacing-unit-56,
+            74: $spacing-unit-74,
+        ),
+        $spacing-map
+);
+/* stylelint-enable */

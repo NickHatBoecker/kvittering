@@ -1,0 +1,19 @@
+/**
+ * Create css classes like "text-primary"
+ * @see $color-map in settings/_colors.scss
+ */
+.text {
+    @include color-modifiers;
+}
+
+/**
+ * Create css classes like "bg-primary"
+ * @see $color-map in settings/_colors.scss
+ */
+.bg {
+    @include color-modifiers($attribute: "background-color");
+}
+
+.bg-transparent {
+    background-color: transparent;
+}

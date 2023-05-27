@@ -1,0 +1,62 @@
+/**
+ * Scss structured using ITCSS. Please refer to
+ *
+ * https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/ for
+ * details.
+ */
+
+
+/**
+ * The settings file includes all variables, mixins, functions, ...
+ *
+ * This will be automatically included from within .vue files.
+ */
+@import "./settings";
+
+
+/**
+ * Generic: Contains basic rules for resets, normalize, box-sizing etc.
+ */
+// @import "~bootstrap/scss/reboot";
+// @import "./font-face";
+// @import "./generic";
+
+
+/**
+ * Mixins
+ */
+// @import "~bootstrap/scss/mixins/breakpoints";
+
+
+/**
+ * Objects: Contains class-based selectors which define undecorated
+ * design patterns. This are usually abstractions related to OOCSS such as
+ *     - media object
+ *     - grid
+ *     - inline-list
+ *
+ * Remember to not style these abstractions. There should be no (or
+ * minimal) use of colors and paddings, margins, background,...
+ */
+// @import "~bootstrap/scss/transitions";
+// @import "~bootstrap/scss/grid";
+// @import "~bootstrap/scss/forms";
+// @import "~bootstrap/scss/tooltip";
+// @import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap-vue/src/index.scss";
+
+
+/**
+ * Utilities: Utilities and helper classes with ability to override anything.
+ *
+ * The use of !important is tolerated here.
+ */
+@import "./utilities/generic";
+@import "./utilities/colors";
+@import "./utilities/display";
+@import "./utilities/positions";
+@import "./utilities/spacing";
+@import "./utilities/flex";
+// @import "~bootstrap/scss/utilities/align";
+// @import "~bootstrap/scss/utilities/screenreaders";

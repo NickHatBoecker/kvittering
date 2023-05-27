@@ -1,0 +1,48 @@
+/**
+ * Grid containers
+ */
+$container-max-widths: (
+    md: 100,
+    lg: 1296px,
+);
+
+/**
+ * Grid breakpoints
+ * additions like $element-breakout because of elements breaking the grid
+ *
+ * You have to also declare them in `assets/theme.js`
+ */
+$grid-breakpoints: (
+    xs: 0,
+    sm: 600px,
+    md: 1098px,
+    lg: 1440px,
+    xl: 1920px,
+);
+
+$link-color: $color-text-default;
+$modal-lg: 875px;
+
+$input-height: 54px;
+
+// Disable validation icon because it conflicts with the select toggle icon
+$enable-validation-icons: false;
+
+// Text field
+$input-btn-border-width: 1px;
+$input-focus-border-color: $primary-color;
+$input-focus-box-shadow: 0 0 0 1px $primary-color;
+$input-border-width: $input-btn-border-width;
+
+// Checkbox
+$custom-control-gutter: 0.5rem;
+$custom-control-indicator-border-width: $input-border-width !default;
+$custom-control-indicator-checked-color: $color-text-default;
+$custom-control-indicator-size: 1.5rem; // rem instead of px because bootstrap calculates with variable value
+$custom-control-indicator-bg: $page-bg-color;
+$custom-control-indicator-checked-bg: $secondary-color;
+$custom-control-indicator-focus-border-color: $input-focus-border-color;
+$custom-control-indicator-focus-box-shadow: $input-focus-box-shadow;
+$custom-control-indicator-bg-size: 100%;
+$custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='none'/%3E%3Cpath d='M18.4958 6.24141C18.2297 6.04701 17.8977 5.96519 17.5716 6.01362C17.2456 6.06206 16.9518 6.23687 16.7536 6.50026L10.8599 14.4647L7.06681 11.5079C6.94045 11.3967 6.79282 11.3122 6.63287 11.2596C6.47291 11.2071 6.30396 11.1875 6.13623 11.2022C5.96851 11.2168 5.80549 11.2654 5.65706 11.3448C5.50863 11.4243 5.37787 11.5331 5.2727 11.6645C5.16752 11.796 5.09012 11.9474 5.04517 12.1097C5.00022 12.2719 4.98866 12.4416 5.0112 12.6085C5.03373 12.7753 5.08989 12.9359 5.17627 13.0804C5.26265 13.2249 5.37746 13.3504 5.51374 13.4493L10.2725 17.2622C10.4043 17.3658 10.5556 17.4418 10.7173 17.4859C10.879 17.53 11.0479 17.5413 11.214 17.519C11.3801 17.4967 11.5401 17.4414 11.6844 17.3562C11.8288 17.2711 11.9547 17.1579 12.0546 17.0233L18.7547 7.98364C18.8522 7.85229 18.9229 7.70301 18.9627 7.54433C19.0024 7.38564 19.0105 7.22067 18.9865 7.05885C18.9624 6.89704 18.9067 6.74155 18.8225 6.60128C18.7383 6.46101 18.6273 6.33873 18.4958 6.24141Z' fill='%23fff'/%3E%3C/svg%3E");
+$custom-checkbox-indicator-icon-checked-disabled: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='%23f2f5f6'/%3E%3Cpath d='M18.4958 6.24141C18.2297 6.04701 17.8977 5.96519 17.5716 6.01362C17.2456 6.06206 16.9518 6.23687 16.7536 6.50026L10.8599 14.4647L7.06681 11.5079C6.94045 11.3967 6.79282 11.3122 6.63287 11.2596C6.47291 11.2071 6.30396 11.1875 6.13623 11.2022C5.96851 11.2168 5.80549 11.2654 5.65706 11.3448C5.50863 11.4243 5.37787 11.5331 5.2727 11.6645C5.16752 11.796 5.09012 11.9474 5.04517 12.1097C5.00022 12.2719 4.98866 12.4416 5.0112 12.6085C5.03373 12.7753 5.08989 12.9359 5.17627 13.0804C5.26265 13.2249 5.37746 13.3504 5.51374 13.4493L10.2725 17.2622C10.4043 17.3658 10.5556 17.4418 10.7173 17.4859C10.879 17.53 11.0479 17.5413 11.214 17.519C11.3801 17.4967 11.5401 17.4414 11.6844 17.3562C11.8288 17.2711 11.9547 17.1579 12.0546 17.0233L18.7547 7.98364C18.8522 7.85229 18.9229 7.70301 18.9627 7.54433C19.0024 7.38564 19.0105 7.22067 18.9865 7.05885C18.9624 6.89704 18.9067 6.74155 18.8225 6.60128C18.7383 6.46101 18.6273 6.33873 18.4958 6.24141Z' fill='%2381949e'/%3E%3C/svg%3E");
