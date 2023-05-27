@@ -47,19 +47,26 @@
             @close="showAddModal = false"
             @add="loadDocuments"
         />
+        <edit-document-modal
+            v-if="selectedDocumentToEdit && showEditModal"
+            :document="selectedDocumentToEdit"
+            @close="showEditModal = false"
+            @edit="loadDocuments"
+        />
     </div>
 </template>
 
 <script>
 import { BButton } from 'bootstrap-vue'
+import { sortItems } from '@/assets/documents'
 import DocumentThumb from '@/components/DocumentThumb.vue'
 import AddDocumentModal from '@/components/ui/AddDocumentModal.vue'
-import { sortItems } from '@/assets/documents'
+import EditDocumentModal from '@/components/ui/EditDocumentModal.vue'
 
 export default {
     name: 'Home',
 
-    components: { AddDocumentModal, BButton, DocumentThumb },
+    components: { AddDocumentModal, EditDocumentModal, BButton, DocumentThumb },
 
     data () {
         return {
@@ -68,6 +75,8 @@ export default {
             documents: [],
             showAddModal: false,
             showEditModal: false,
+
+            selectedDocumentToEdit: null,
         }
     },
 
@@ -100,8 +109,14 @@ export default {
         },
 
         async onEdit (id) {
-            await this.$appwrite.updateDocument(id, 'Test document (updated)', '2018-01-01')
-            await this.loadDocuments()
+            const document = this.documents.find(x => x.id === id) ?? null
+            if (!document) {
+                this.$toast.open({ type: 'error', message: 'An error occured. Please try again later.' })
+                return
+            }
+
+            this.selectedDocumentToEdit = document
+            this.showEditModal = true
         },
 
         async onTrash (id) {

@@ -1,7 +1,7 @@
 <template>
     <b-modal ref="modal" hide-footer centered @hide="$emit('close')">
         <template #modal-title>
-            Add document
+            Edit document
         </template>
         <form @submit.prevent="onSubmit">
             <div class="form-group">
@@ -14,11 +14,6 @@
                 <input v-model="form.date" class="form-control" type="date" id="date" />
             </div>
 
-            <div class="form-group">
-                <label for="file">File <sup title="Mandatory">*</sup></label>
-                <drop-file v-model="form.file" />
-            </div>
-
             <b-button type="submit" variant="secondary" block>
                 <b-spinner v-if="isLoading" small />
                 <template v-else>Submit</template>
@@ -29,21 +24,24 @@
 </template>
 
 <script>
+import { parseISO } from 'date-fns'
 import { BModal, BButton, BSpinner } from 'bootstrap-vue'
-import DropFile from '@/components/form/DropFile.vue'
 
 export default {
-    name: 'AddDocumentModal',
+    name: 'EditDocumentModal',
 
-    components: { BModal, BButton, BSpinner, DropFile },
+    components: { BModal, BButton, BSpinner },
+
+    props: {
+        document: { type: Object, required: true },
+    },
 
     data () {
         return {
             isLoading: false,
             form: {
-                title: '',
-                date: '',
-                file: null,
+                title: this.document.title,
+                date: this.document.date ? this.$date(parseISO(this.document.date), 'yyyy-MM-dd') : '',
             },
         }
     },
@@ -62,10 +60,9 @@ export default {
                     date = new Date(this.form.date)
                 }
 
-                const fileId = await this.$appwrite.uploadFile(this.form.file)
-                await this.$appwrite.addDocument(this.form.title, fileId, date)
+                await this.$appwrite.updateDocument(this.document.id, this.form.title, date)
 
-                this.$emit('add')
+                this.$emit('edit')
                 this.$emit('close')
             } catch (e) {
                 console.log(e)
