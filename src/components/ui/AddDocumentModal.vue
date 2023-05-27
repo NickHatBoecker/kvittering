@@ -1,5 +1,5 @@
 <template>
-    <b-modal ref="modal" hide-footer>
+    <b-modal ref="modal" hide-footer centered>
         <template #modal-title>
             Add document
         </template>

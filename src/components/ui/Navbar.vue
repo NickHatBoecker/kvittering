@@ -1,5 +1,5 @@
 <template>
-    <b-navbar toggleable="lg" type="dark" variant="primary">
+    <b-navbar toggleable="lg" type="dark" variant="primary" sticky>
         <b-navbar-brand :to="{ name: 'Home' }">kvittering</b-navbar-brand>
 
         <template v-if="user">
@@ -52,4 +52,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$head-bar-background-color: $primary-color;
+
+.navbar {
+    background: $head-bar-background-color;
+    background: linear-gradient(180deg, $head-bar-background-color 20%, $black 100%);
+}
 </style>

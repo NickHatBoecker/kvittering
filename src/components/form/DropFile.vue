@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-if="value">
-            <small>Ausgewählte Datei: {{ value.name }}</small>
+            <small>Selected file: {{ value.name }}</small>
             <button
                 class="drop-file__icon u-reset-button text-danger"
                 title="Datei entfernen"
@@ -11,34 +11,37 @@
             </button>
         </div>
 
-        <div
-            v-else
-            ref="dropFile"
-            class="drop-file u-flex u-flex--center p-24 u-text-center"
-            @drop="handleFileDrop"
-            @click="triggerClick"
-        >
-            <span class="text-mute">
-                <template v-if="dragAndDropEnabled">Datei hier ablegen oder klicken</template>
-                <template v-else>Drag and Drop wird nicht unterstützt</template>
-            </span>
-            <input
-                ref="file"
-                type="file"
-                class="u-display-none"
-                :accept="allowedTypes.join(',')"
-                @change="onBrowseFile"
-            />
-        </div>
+        <template v-else>
+            <div
+                ref="dropFile"
+                class="drop-file u-flex u-flex--center p-24 u-text-center"
+                @drop="handleFileDrop"
+                @click="triggerClick"
+            >
+                <span class="text-mute">
+                    <template v-if="dragAndDropEnabled">Drop file or click to choose</template>
+                    <template v-else>Drag and Drop is not supported</template>
+                </span>
+                <input
+                    ref="file"
+                    type="file"
+                    class="u-display-none"
+                    :accept="allowedTypes.join(',')"
+                    @change="onBrowseFile"
+                />
+            </div>
+            <small class="text-muted">Allowed file types: {{ allowedTypesString }}</small>
+        </template>
 
         <p v-if="error" class="text-error">{{ error }}</p>
     </div>
 </template>
 
 <script>
+import { prop } from 'ramda'
 import { BIcon } from 'bootstrap-vue'
 
-const ALLOWED_TYPES = ['application/pdf', 'image/jpeg']
+const ALLOWED_TYPES = ['application/pdf', 'image/jpeg', 'image/png']
 
 export default {
     name: 'DropFile',
@@ -55,6 +58,13 @@ export default {
         error: '',
         browsedFile: null,
     }),
+
+    computed: {
+        allowedTypesString () {
+            const types = this.allowedTypes.map(x => prop(1, x.split('/')).toUpperCase())
+            return types.join(', ')
+        },
+    },
 
     watch: {
         async value (value) {
@@ -118,7 +128,7 @@ export default {
             const file = event.dataTransfer.files[0]
 
             if (!this.allowedTypes.includes(file?.type)) {
-                this.error = `Der Dateityp ${file.type} ist nicht erlaubt.`
+                this.error = `File type ${file.type} is not allowed.`
                 return
             }
 
@@ -130,7 +140,7 @@ export default {
             const file = event?.target?.files[0]
 
             if (!this.allowedTypes.includes(file?.type)) {
-                this.error = `Der Dateityp ${file.type} ist nicht erlaubt.`
+                this.error = `File type ${file.type} is not allowed.`
                 return
             }
 

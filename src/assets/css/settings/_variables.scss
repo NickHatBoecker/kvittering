@@ -8,6 +8,7 @@ $spacing-unit-48: 48px;
 $spacing-unit-56: 56px;
 $spacing-unit-56: 56px;
 $spacing-unit-74: 74px;
+$spacing-unit-100: 100px;
 
 /* stylelint-disable function-comma-space-after */
 $spacing-map: () !default;
@@ -23,6 +24,7 @@ $spacing-map: map-merge(
             48: $spacing-unit-48,
             56: $spacing-unit-56,
             74: $spacing-unit-74,
+            100: $spacing-unit-100,
         ),
         $spacing-map
 );

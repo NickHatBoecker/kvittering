@@ -1,19 +1,35 @@
 <template>
     <div class="home container mt-4">
-        <!--<img alt="Vue logo" src="../assets/logo.png">-->
-        <div class="ml-12 u-flex u-flex--vertical-end">
-            <h1 class="mb-0 mr-12">
-                <b-icon icon="files" aria-hidden="true" />
-                Documents <small class="text-muted">({{ numDocuments }})</small>
-            </h1>
-            <b-button variant="secondary" title="Add document" squared @click="showAddModal = true">
-                <b-icon icon="plus" aria-hidden="true" />
-            </b-button>
+        <div class="u-flex-wrap mx-12 u-flex u-flex--space-between u-flex--vertical-align">
+            <div class="col-12 col-md-6 px-0 u-flex u-flex--vertical-end mb-24">
+                <h1 class="mb-0 mr-12">
+                    <b-icon icon="files" aria-hidden="true" />
+                    Documents <small class="text-muted">({{ numDocuments }})</small>
+                </h1>
+                <b-button variant="secondary" title="Add document" squared @click="showAddModal = true">
+                    <b-icon icon="plus" aria-hidden="true" />
+                </b-button>
+            </div>
+
+            <div class="col-12 col-md-3 pr-0 row u-flex--vertical-align">
+                <div class="col-12 col-sm-5 u-text-right@desktop">
+                    <label for="sortby"><small class="font-weight-bold">Sort by</small></label>
+                </div>
+                <div class="col-12 col-sm-7">
+                    <select v-model="sortBy" class="form-control d-inline" id="sortby">
+                        <option value="updated_desc">Changed</option>
+                        <option value="date">Date ASC</option>
+                        <option value="date_desc">Date DESC</option>
+                        <option value="title">Title A-Z</option>
+                        <option value="title_desc">Title Z-A</option>
+                    </select>
+                </div>
+            </div>
         </div>
 
         <div v-if="documents.length" class="u-flex u-flex-wrap mt-5">
             <div
-                v-for="document in documents"
+                v-for="document in sortedDocuments"
                 :key="document.id"
                 class="col-12 col-md-3 mb-4"
             >
@@ -38,6 +54,7 @@
 import { BButton } from 'bootstrap-vue'
 import DocumentThumb from '@/components/DocumentThumb.vue'
 import AddDocumentModal from '@/components/ui/AddDocumentModal.vue'
+import { sortItems } from '@/assets/documents'
 
 export default {
     name: 'Home',
@@ -47,6 +64,7 @@ export default {
     data () {
         return {
             isLoading: false,
+            sortBy: 'updated_desc',
             documents: [],
             showAddModal: false,
             showEditModal: false,
@@ -56,6 +74,10 @@ export default {
     computed: {
         numDocuments () {
             return this.documents.length
+        },
+
+        sortedDocuments () {
+            return sortItems(this.documents, this.sortBy)
         },
     },
 
