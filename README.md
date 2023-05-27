@@ -4,6 +4,15 @@ Seamlessly convert your documents and invoices into digital format and access th
 
 This app was developed for the Appwrite Hackathon 2023.
 
+## Stack
+
+- VueJS v2
+- appwrite
+
+## Demo
+
+Visit [Demo](https://nickhatboecker.github.io/kvittering/), hosted on GitHub Pages.
+
 ## Project setup
 ```
 yarn
