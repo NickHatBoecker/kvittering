@@ -7,7 +7,7 @@
             </h1>
         </div>
 
-        <div class="u-flex u-flex-wrap mt-5">
+        <div v-if="documents.length" class="u-flex u-flex-wrap mt-5">
             <div
                 v-for="document in documents"
                 :key="document.id"
@@ -20,6 +20,7 @@
                 />
             </div>
         </div>
+        <div v-else class="u-flex u-flex--center mt-5 h3 text-muted">You have no documents trashed.</div>
     </div>
 </template>
 
@@ -67,9 +68,9 @@ export default {
             await this.loadDocuments()
         },
 
-        async onDelete (documentId, fileId) {
-            await this.$appwrite.deleteDocument(documentId)
+        async onDelete ({ documentId, fileId }) {
             await this.$appwrite.deleteFile(fileId)
+            await this.$appwrite.deleteDocument(documentId)
             await this.loadDocuments()
         },
     },

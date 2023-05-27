@@ -6,12 +6,12 @@
                 <b-icon icon="files" aria-hidden="true" />
                 Documents <small class="text-muted">({{ numDocuments }})</small>
             </h1>
-            <b-button variant="secondary" title="Add document" squared @click="onAdd">
+            <b-button variant="secondary" title="Add document" squared @click="showAddModal = true">
                 <b-icon icon="plus" aria-hidden="true" />
             </b-button>
         </div>
 
-        <div class="u-flex u-flex-wrap mt-5">
+        <div v-if="documents.length" class="u-flex u-flex-wrap mt-5">
             <div
                 v-for="document in documents"
                 :key="document.id"
@@ -24,17 +24,25 @@
                 />
             </div>
         </div>
+        <div v-else class="u-flex u-flex--center mt-5 h3 text-muted">You have not uploaded any documents yet.</div>
+
+        <add-document-modal
+            v-if="showAddModal"
+            @close="showAddModal = false"
+            @add="loadDocuments"
+        />
     </div>
 </template>
 
 <script>
 import { BButton } from 'bootstrap-vue'
 import DocumentThumb from '@/components/DocumentThumb.vue'
+import AddDocumentModal from '@/components/ui/AddDocumentModal.vue'
 
 export default {
     name: 'Home',
 
-    components: { BButton, DocumentThumb },
+    components: { AddDocumentModal, BButton, DocumentThumb },
 
     data () {
         return {
@@ -67,11 +75,6 @@ export default {
             } finally {
                 this.isLoading = false
             }
-        },
-
-        async onAdd () {
-            await this.$appwrite.addDocument('Test document', 'https://placekitten.com/g/300/450', '64715bed391b835df325', '2018-01-01')
-            await this.loadDocuments()
         },
 
         async onEdit (id) {

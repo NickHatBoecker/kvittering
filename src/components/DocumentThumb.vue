@@ -53,7 +53,7 @@
                 variant="outline-danger"
                 size="sm"
                 title="Delete document permanently"
-                @click="$emit('delete', id, url)"
+                @click="$emit('delete', { documentId: id, fileId })"
             >
                 <b-icon icon="trash-fill" aria-hidden="true" /> Delete
             </b-button>
@@ -76,7 +76,7 @@ export default {
         id: { type: String, required: true },
         title: { type: String, required: true },
         date: { type: String, required: true },
-        url: { type: String, required: true },
+        fileId: { type: String, required: true },
 
         // AVAILABLE_ACTIONS = ['edit', 'trash', 'delete', 'untrash']
         actions: { type: Array, default: () => ['edit', 'trash'] },
@@ -85,12 +85,12 @@ export default {
     data: () => ({ thumb: '', showViewOverlay: false }),
 
     async mounted () {
-        this.thumb = await this.$appwrite.getFileThumb(this.url)
+        this.thumb = await this.$appwrite.getFileThumb(this.fileId)
     },
 
     methods: {
         async openDocument () {
-            const { href } = await this.$appwrite.getFileUrl(this.url)
+            const { href } = await this.$appwrite.getFileUrl(this.fileId)
 
             setTimeout(() => {
                 // Timeout is needed for iOS

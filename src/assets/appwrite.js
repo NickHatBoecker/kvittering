@@ -23,7 +23,7 @@ export default {
         const { documents } = await databases.listDocuments(DB_NAME, DOCUMENT_COLLECTION, [Query.equal('status', DOCUMENT_STATUS_PUBLISHED)])
 
         return map(doc => pipe(
-            pick(['title', 'status', 'date', 'url']),
+            pick(['title', 'status', 'date', 'fileId']),
             assoc('id', doc.$id),
         )(doc))(documents)
     },
@@ -32,16 +32,16 @@ export default {
         const { documents } = await databases.listDocuments(DB_NAME, DOCUMENT_COLLECTION, [Query.equal('status', DOCUMENT_STATUS_TRASHED)])
 
         return map(doc => pipe(
-            pick(['title', 'status', 'date', 'url']),
+            pick(['title', 'status', 'date', 'fileId']),
             assoc('id', doc.$id),
         )(doc))(documents)
     },
 
-    addDocument: async (title, url, date) => {
+    addDocument: async (title, fileId, date) => {
         const id = ID.unique()
         const status = DOCUMENT_STATUS_PUBLISHED
 
-        await databases.createDocument(DB_NAME, DOCUMENT_COLLECTION, id, { title, url, date, status, updated: new Date() })
+        await databases.createDocument(DB_NAME, DOCUMENT_COLLECTION, id, { title, fileId, date, status, updated: new Date() })
     },
 
     updateDocument: async (id, title, date) => {
@@ -72,10 +72,9 @@ export default {
     uploadFile: async (file) => {
         const permissions = [] // @TODO
 
-        const response = await storage.createFile(BUCKET_ID, ID.unique(), file, permissions)
-        console.log(response)
+        const { $id } = await storage.createFile(BUCKET_ID, ID.unique(), file, permissions)
 
-        return 'file_id'
+        return $id
     },
 
     deleteFile: async (id) => {
