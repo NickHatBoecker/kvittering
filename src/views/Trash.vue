@@ -1,7 +1,7 @@
 <template>
     <div class="trash container mt-4">
         <div class="u-flex u-flex--vertical-end">
-            <h1 class="mb-0 mr-12">
+            <h1 class="mb-0 mr-12 h2">
                 <b-icon icon="trash" aria-hidden="true" />
                 Trash <small class="text-muted">({{ numDocuments }})</small>
             </h1>
@@ -20,7 +20,7 @@
                 />
             </div>
         </div>
-        <div v-else class="u-flex u-flex--center mt-5 h3 text-muted">You have no documents trashed.</div>
+        <div v-else class="u-flex u-flex--center mt-5 h3 text-muted u-text-center px-12">You have no documents trashed.</div>
     </div>
 </template>
 
