@@ -15,4 +15,8 @@ export default {
 
 <style lang="scss">
 @import './assets/css/main.scss';
+
+body {
+    background-image: url("~@/assets/page-pattern.png");
+}
 </style>
