@@ -1,24 +1,20 @@
 # kvittering
 
+Seamlessly convert your documents and invoices into digital format and access them from anywhere.
+
+This app was developed for the Appwrite Hackathon 2023.
+
 ## Project setup
 ```
-yarn install
+yarn
+cp .env .env.local
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn dev
-```
+Put your appwrite project id via `VUE_APP_APPWRITE_PROJECT_ID` in `.env.local`.
 
-### Compiles and minifies for production
+### Development
 ```
-yarn build
+yarn dev           # Compiles and hot-reloads for development
+yarn build         # Compiles and minifies for production
+yarn lint --fix    # Lints and fixes files
 ```
-
-### Lints and fixes files
-```
-yarn lint --fix
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
