@@ -52,7 +52,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kvittering/js/trash.0cd6320b.js"
   },
   {
-    "revision": "6455872425019b6e3f7f31b981e6be13",
+    "revision": "3520e6917d40110ab2cb5b0ad12d097b",
     "url": "/kvittering/manifest.json"
   },
   {
