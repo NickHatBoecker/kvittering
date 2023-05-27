@@ -1,5 +1,5 @@
 import { assoc, map, pick, pipe } from 'ramda'
-import { ID, Account, Databases, Client, Query, Storage } from 'appwrite'
+import { ID, Account, Databases, Client, Query, Storage, Role, Permission } from 'appwrite'
 
 const DB_NAME = process.env.VUE_APP_DB_ID
 const DOCUMENT_COLLECTION = process.env.VUE_APP_DOCUMENT_COLLECTION
@@ -14,10 +14,11 @@ const client = (new Client())
 
 const databases = new Databases(client)
 const storage = new Storage(client)
+const account = new Account(client)
 
 export default {
     client,
-    account: new Account(client),
+    account,
 
     getPublishedDocuments: async () => {
         const { documents } = await databases.listDocuments(DB_NAME, DOCUMENT_COLLECTION, [Query.equal('status', DOCUMENT_STATUS_PUBLISHED)])
@@ -71,7 +72,14 @@ export default {
     },
 
     uploadFile: async (file) => {
-        const permissions = [] // @TODO
+        const { $id: userId } = await account.get()
+        const permittedUser = Role.user(userId)
+
+        const permissions = [
+            Permission.read(permittedUser),
+            Permission.delete(permittedUser),
+        ]
+        console.log('PERMISSIONS', permissions)
 
         const { $id } = await storage.createFile(BUCKET_ID, ID.unique(), file, permissions)
 
