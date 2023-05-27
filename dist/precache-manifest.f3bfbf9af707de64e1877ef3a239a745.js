@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "99dc0b91c6e34074485f",
+    "revision": "53b9af0a06e9f916d492",
     "url": "/kvittering/css/app.8d9b60d9.css"
   },
   {
@@ -12,12 +12,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kvittering/img/page-pattern.db4ff89e.png"
   },
   {
-    "revision": "5ee1c9de0e92d5272503b478e1ec418f",
+    "revision": "46fe2b1ecc0767982b47e78f956e1818",
     "url": "/kvittering/index.html"
   },
   {
-    "revision": "99dc0b91c6e34074485f",
-    "url": "/kvittering/js/app.05b4b986.js"
+    "revision": "53b9af0a06e9f916d492",
+    "url": "/kvittering/js/app.bc0dd14e.js"
   },
   {
     "revision": "e7f154f3ff981bc73aa1",

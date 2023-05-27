@@ -42,7 +42,15 @@ export default {
         const id = ID.unique()
         const status = DOCUMENT_STATUS_PUBLISHED
 
-        await databases.createDocument(DB_NAME, DOCUMENT_COLLECTION, id, { title, fileId, date, status, updated: new Date() })
+        const { $id: userId } = await account.get()
+        const permittedUser = Role.user(userId)
+
+        const permissions = [
+            Permission.read(permittedUser),
+            Permission.delete(permittedUser),
+        ]
+
+        await databases.createDocument(DB_NAME, DOCUMENT_COLLECTION, id, { title, fileId, date, status, updated: new Date() }, permissions)
     },
 
     updateDocument: async (id, title, date) => {
@@ -79,7 +87,6 @@ export default {
             Permission.read(permittedUser),
             Permission.delete(permittedUser),
         ]
-        console.log('PERMISSIONS', permissions)
 
         const { $id } = await storage.createFile(BUCKET_ID, ID.unique(), file, permissions)
 
