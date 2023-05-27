@@ -1,5 +1,5 @@
 module.exports = {
-    // publicPath: process.env.NODE_ENV === 'production' ? '/some-path/' : '/',
+    publicPath: process.env.NODE_ENV === 'production' ? '/kvittering/' : '/',
     css: {
         loaderOptions: {
             scss: {
@@ -10,11 +10,20 @@ module.exports = {
     },
     pwa: {
         name: 'kvittering',
-        themeColor: '#30304a',
+        themeColor: '#343435',
         display: 'standalone',
         workboxOptions: {
             // This line is required so that changes are displayed directly in the PWA.
             skipWaiting: true,
+        },
+        manifestOptions: {
+            icons: [
+                { src: "/favicon.ico", type: "image/x-icon", sizes: "16x16 32x32" },
+                { src: "/img/icons/icon-192.png", type: "image/png", sizes: "192x192" },
+                { src: "/img/icons/icon-512.png", type: "image/png", sizes: "512x512" },
+                { src: "/img/icons/icon-192-maskable.png", type: "image/png", sizes: "192x192", purpose: "maskable" },
+                { src: "/img/icons/icon-512-maskable.png", type: "image/png", sizes: "512x512", purpose: "maskable" },
+            ],
         },
     },
 }

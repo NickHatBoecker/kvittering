@@ -1,7 +1,7 @@
 <template>
     <div class="container u-full-height u-flex u-flex-col pt-4">
         <div class="mb-24">
-            <h2 class="u-text-normal mb-12">Login</h2>
+            <h2 class="u-text-normal mb-12">Sign into your account</h2>
 
             <form @submit.prevent="onSubmit">
                 <div class="form-group mr-12">
@@ -34,7 +34,7 @@
 
             <p class="mt-4">
                 Don't have an account?
-                <router-link :to="{ name: 'SignUp' }" class="text-secondary">Sign up</router-link>
+                <router-link :to="{ name: 'SignUp' }" class="text-secondary">Register here</router-link>
             </p>
         </div>
     </div>

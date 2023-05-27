@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="form-group mr-12">
-                    <label for="password">Repeat password <sup>*</sup></label>
+                    <label for="password">Confirm password <sup>*</sup></label>
                     <input
                         v-model="form.repeatPassword"
                         class="form-control"
@@ -47,7 +47,7 @@
 
             <p class="mt-4">
                 Already have an account?
-                <router-link :to="{ name: 'Login' }" class="text-secondary">Log in</router-link>
+                <router-link :to="{ name: 'Login' }" class="text-secondary">Sign in here</router-link>
             </p>
         </div>
     </div>
