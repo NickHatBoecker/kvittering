@@ -4,11 +4,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kvittering/apple-touch-icon.png"
   },
   {
-    "revision": "a2744bb537b2511935e6",
-    "url": "/kvittering/css/app.8d9b60d9.css"
+    "revision": "8b59afe8a8eaa3246620",
+    "url": "/kvittering/css/app.eea3ec13.css"
   },
   {
-    "revision": "e7f154f3ff981bc73aa1",
+    "revision": "4a4800f782881a320e91",
     "url": "/kvittering/css/chunk-vendors.f5fd725b.css"
   },
   {
@@ -32,16 +32,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kvittering/img/page-pattern.db4ff89e.png"
   },
   {
-    "revision": "9cce0e8fe83ece6f5ddc0c8917f30664",
+    "revision": "0b04bff4297779918fd4afbebbef4388",
     "url": "/kvittering/index.html"
   },
   {
-    "revision": "a2744bb537b2511935e6",
-    "url": "/kvittering/js/app.6a781b88.js"
+    "revision": "8b59afe8a8eaa3246620",
+    "url": "/kvittering/js/app.0e930c4f.js"
   },
   {
-    "revision": "e7f154f3ff981bc73aa1",
-    "url": "/kvittering/js/chunk-vendors.3e62d7ae.js"
+    "revision": "4a4800f782881a320e91",
+    "url": "/kvittering/js/chunk-vendors.59042269.js"
   },
   {
     "revision": "36a8b2568d70ad184eae",
