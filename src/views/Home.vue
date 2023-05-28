@@ -11,7 +11,7 @@
                 </b-button>
             </div>
 
-            <div v-if="documents.length" class="col-12 col-md-3 pr-0 row u-flex--vertical-align">
+            <div v-if="documents.length" class="col-12 col-md-3 px-0 row u-flex--vertical-align">
                 <div class="col-12 col-sm-5 u-text-right@desktop">
                     <label for="sortby"><small class="font-weight-bold">Sort by</small></label>
                 </div>
@@ -27,19 +27,26 @@
             </div>
         </div>
 
-        <div v-if="documents.length" class="u-flex u-flex-wrap mt-5">
-            <div
-                v-for="document in sortedDocuments"
-                :key="document.id"
-                class="col-12 col-md-3 mb-4"
-            >
-                <document-thumb
-                    v-bind="document"
-                    @edit="onEdit"
-                    @trash="onTrash"
-                />
+        <template v-if="documents.length">
+            <div class="mt-24 px-12">
+                <input v-model="search" type="text" placeholder="Search for document..." class="form-control" />
             </div>
-        </div>
+
+            <div v-if="sortedFilteredDocuments.length" class="u-flex u-flex-wrap mt-5">
+                <div
+                    v-for="document in sortedFilteredDocuments"
+                    :key="document.id"
+                    class="col-12 col-md-3 mb-4"
+                >
+                    <document-thumb
+                        v-bind="document"
+                        @edit="onEdit"
+                        @trash="onTrash"
+                    />
+                </div>
+            </div>
+            <div v-else class="u-flex u-flex--center mt-5 h3 text-muted u-text-center px-12">No documents found with your criteria.</div>
+        </template>
         <div v-else class="u-flex u-flex--center mt-5 h3 text-muted u-text-center px-12">You have not uploaded any documents yet.</div>
 
         <add-document-modal
@@ -57,6 +64,7 @@
 </template>
 
 <script>
+import { parseISO } from 'date-fns'
 import { BButton } from 'bootstrap-vue'
 import { sortItems } from '@/assets/documents'
 import DocumentThumb from '@/components/DocumentThumb.vue'
@@ -71,6 +79,7 @@ export default {
     data () {
         return {
             isLoading: false,
+            search: '',
             sortBy: 'updated_desc',
             documents: [],
             showAddModal: false,
@@ -85,8 +94,24 @@ export default {
             return this.documents.length
         },
 
-        sortedDocuments () {
-            return sortItems(this.documents, this.sortBy)
+        sortedFilteredDocuments () {
+            return sortItems(this.filteredDocuments, this.sortBy)
+        },
+
+        filteredDocuments () {
+            const search = this.search
+
+            return this.documents.filter(doc => {
+                if (search) {
+                    const loweredSearch = search.toLowerCase()
+                    const docNameSatisfies = doc.title.toLowerCase().includes(loweredSearch)
+                    const dateSatisfies = this.$date(parseISO(doc.date), 'dd/MM/yyyy').includes(loweredSearch)
+
+                    if (!docNameSatisfies && !dateSatisfies) return false
+                }
+
+                return true
+            })
         },
     },
 

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/kvittering/precache-manifest.a6837748c409f9c30289c84171b12890.js"
+  "/kvittering/precache-manifest.560496d38b7ec009c3f9715fb1192975.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "kvittering"});
