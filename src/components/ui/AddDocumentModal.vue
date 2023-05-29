@@ -21,8 +21,14 @@
 
             <div class="form-group">
                 <label for="tags">Tags</label>
-                <b-form-tags input-id="tags" v-model="form.tags" />
-                <small class="m-0 text-muted">Press ENTER to add tag</small>
+                <b-form-tags
+                    v-model="form.tags"
+                    input-id="tags"
+                    separator=","
+                    tag-variant="dark"
+                    remove-on-delete
+                />
+                <small class="m-0 text-muted">Press ENTER or , to add tag</small>
             </div>
 
             <b-button type="submit" variant="secondary" block>
