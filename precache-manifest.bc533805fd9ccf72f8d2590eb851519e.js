@@ -32,7 +32,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kvittering/img/page-pattern.db4ff89e.png"
   },
   {
-    "revision": "ee6b4dd15a4143c2995ebce8d54ed792",
+    "revision": "ac95d5ccecc60b868fdcdf1603d52137",
     "url": "/kvittering/index.html"
   },
   {
