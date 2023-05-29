@@ -16,7 +16,7 @@
                     <label for="sortby"><small class="font-weight-bold">Sort by</small></label>
                 </div>
                 <div class="col-12 col-sm-7">
-                    <select v-model="sortBy" class="form-control d-inline" id="sortby">
+                    <select v-model="sortBy" class="custom-select custom-select d-inline" id="sortby">
                         <option value="updated_desc">Changed</option>
                         <option value="date">Date ASC</option>
                         <option value="date_desc">Date DESC</option>
