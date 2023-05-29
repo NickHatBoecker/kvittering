@@ -11,7 +11,7 @@ This app was developed for the Appwrite Hackathon 2023.
 
 ## Demo
 
-Visit [Demo](https://nickhatboecker.github.io/kvittering/), hosted on GitHub Pages.
+Open [Demo](https://kvittering.nickhatboecker.de).
 
 ## Project setup
 ```
