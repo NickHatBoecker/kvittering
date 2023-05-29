@@ -31,7 +31,7 @@
             <div class="search__wrapper form-group mt-24 px-12">
                 <input v-model="search" type="text" placeholder="Search for document..." class="form-control" />
                 <button class="u-reset-button search__clear p-0" title="Clear" @click="search = ''">
-                    <b-icon icon="x" />
+                    <b-icon icon="x" class="text-dark" />
                 </button>
             </div>
 

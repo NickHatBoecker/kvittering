@@ -75,7 +75,21 @@ export default {
     },
 
     getFileThumb: async (id) => {
-        const { href } = await storage.getFilePreview(BUCKET_ID, id)
+        const { href } = await storage.getFilePreview(
+            BUCKET_ID,
+            id,
+            300,
+            366,
+            'top',
+            100,
+            0,
+            'ffffff',
+            0,
+            1,
+            0,
+            'ffffff',
+            'jpg',
+        )
 
         return href
     },
