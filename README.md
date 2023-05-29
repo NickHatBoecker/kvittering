@@ -30,5 +30,5 @@ yarn lint --fix    # Lints and fixes files
 
 ## Roadmap
 
-- fix ios preview
+- fix "open file" for safari => https://github.com/appwrite/appwrite/issues/5600
 - add tags

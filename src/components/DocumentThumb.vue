@@ -91,8 +91,8 @@ export default {
 
     data: () => ({ thumb: '', showViewOverlay: false }),
 
-    async mounted () {
-        this.thumb = await this.$appwrite.getFileThumb(this.fileId)
+    mounted () {
+        this.loadThumb()
     },
 
     methods: {
@@ -104,6 +104,41 @@ export default {
                 // @see https://stackoverflow.com/a/70463940/3356082
                 window.open(href, '_blank', 'noreferrer')
             })
+        },
+
+        /**
+         * We need a workaround for Safari.
+         * [1] Get preview url from appwrite
+         * [2] Generate jwt token for authenticated fetch request
+         * [3] Get file blob via fetch
+         * [4] Get base64 string from blob
+         */
+        async loadThumb () {
+            const thumbUrl = await this.$appwrite.getFileThumb(this.fileId) // [1]
+
+            try {
+                const { jwt } = await this.$appwrite.account.createJWT() // [2]
+
+                // [3]
+                const response = await fetch(thumbUrl, {
+                    method: 'GET',
+                    cache: 'no-cache',
+                    headers: {
+                        'x-appwrite-jwt': jwt,
+                    },
+                })
+                const blob = await response.blob()
+                const that = this
+
+                // [4]
+                const reader = new FileReader()
+                reader.onload = function () {
+                    that.thumb = this.result
+                }
+                reader.readAsDataURL(blob)
+            } catch (e) {
+                console.log(e)
+            }
         },
     },
 }
