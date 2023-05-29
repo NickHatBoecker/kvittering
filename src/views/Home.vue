@@ -109,8 +109,9 @@ export default {
                     const loweredSearch = search.toLowerCase()
                     const docNameSatisfies = doc.title.toLowerCase().includes(loweredSearch)
                     const dateSatisfies = this.$date(parseISO(doc.date), 'dd/MM/yyyy').includes(loweredSearch)
+                    const tagsSatisfy = doc.tags.join(',').toLowerCase().includes(loweredSearch)
 
-                    if (!docNameSatisfies && !dateSatisfies) return false
+                    if (!docNameSatisfies && !dateSatisfies && !tagsSatisfy) return false
                 }
 
                 return true

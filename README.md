@@ -31,4 +31,4 @@ yarn lint --fix    # Lints and fixes files
 ## Roadmap
 
 - fix "open file" for safari => https://github.com/appwrite/appwrite/issues/5600
-- add tags
+- add autocomplete for tags

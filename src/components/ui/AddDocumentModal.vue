@@ -19,6 +19,12 @@
                 <drop-file v-model="form.file" />
             </div>
 
+            <div class="form-group">
+                <label for="tags">Tags</label>
+                <b-form-tags input-id="tags" v-model="form.tags" />
+                <small class="m-0 text-muted">Press ENTER to add tag</small>
+            </div>
+
             <b-button type="submit" variant="secondary" block>
                 <b-spinner v-if="isLoading" small />
                 <template v-else>Submit</template>
@@ -29,13 +35,13 @@
 </template>
 
 <script>
-import { BModal, BButton, BSpinner } from 'bootstrap-vue'
+import { BModal, BButton, BSpinner, BFormTags } from 'bootstrap-vue'
 import DropFile from '@/components/form/DropFile.vue'
 
 export default {
     name: 'AddDocumentModal',
 
-    components: { BModal, BButton, BSpinner, DropFile },
+    components: { BModal, BButton, BSpinner, BFormTags, DropFile },
 
     data () {
         return {
@@ -44,6 +50,7 @@ export default {
                 title: '',
                 date: '',
                 file: null,
+                tags: [],
             },
         }
     },
@@ -63,7 +70,7 @@ export default {
                 }
 
                 const fileId = await this.$appwrite.uploadFile(this.form.file)
-                await this.$appwrite.addDocument(this.form.title, fileId, date)
+                await this.$appwrite.addDocument(this.form.title, fileId, date, this.form.tags)
 
                 this.$emit('add')
                 this.$emit('close')

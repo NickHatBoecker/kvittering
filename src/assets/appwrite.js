@@ -26,6 +26,7 @@ export default {
         return map(doc => pipe(
             pick(['title', 'status', 'date', 'fileId']),
             assoc('id', doc.$id),
+            assoc('tags', doc.tags ? doc.tags.split(',') : []),
         )(doc))(documents)
     },
 
@@ -38,7 +39,7 @@ export default {
         )(doc))(documents)
     },
 
-    addDocument: async (title, fileId, date) => {
+    addDocument: async (title, fileId, date, tags) => {
         const id = ID.unique()
         const status = DOCUMENT_STATUS_PUBLISHED
 
@@ -51,11 +52,22 @@ export default {
             Permission.delete(permittedUser),
         ]
 
-        await databases.createDocument(DB_NAME, DOCUMENT_COLLECTION, id, { title, fileId, date, status, updated: new Date() }, permissions)
+        await databases.createDocument(DB_NAME, DOCUMENT_COLLECTION, id, {
+            title,
+            fileId,
+            date,
+            tags: tags.join(','),
+            status, updated: new Date(),
+        }, permissions)
     },
 
-    updateDocument: async (id, title, date) => {
-        await databases.updateDocument(DB_NAME, DOCUMENT_COLLECTION, id, { title, date, updated: new Date() })
+    updateDocument: async (id, title, date, tags) => {
+        await databases.updateDocument(DB_NAME, DOCUMENT_COLLECTION, id, {
+            title,
+            date,
+            tags: tags.join(','),
+            updated: new Date(),
+        })
     },
 
     trashDocument: async (id) => {
