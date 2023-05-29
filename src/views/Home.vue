@@ -28,8 +28,11 @@
         </div>
 
         <template v-if="documents.length">
-            <div class="mt-24 px-12">
+            <div class="search__wrapper form-group mt-24 px-12">
                 <input v-model="search" type="text" placeholder="Search for document..." class="form-control" />
+                <button class="u-reset-button search__clear p-0" title="Clear" @click="search = ''">
+                    <b-icon icon="x" />
+                </button>
             </div>
 
             <div v-if="sortedFilteredDocuments.length" class="u-flex u-flex-wrap mt-5">
@@ -65,7 +68,7 @@
 
 <script>
 import { parseISO } from 'date-fns'
-import { BButton } from 'bootstrap-vue'
+import { BButton, BIcon } from 'bootstrap-vue'
 import { sortItems } from '@/assets/documents'
 import DocumentThumb from '@/components/DocumentThumb.vue'
 import AddDocumentModal from '@/components/ui/AddDocumentModal.vue'
@@ -74,7 +77,7 @@ import EditDocumentModal from '@/components/ui/EditDocumentModal.vue'
 export default {
     name: 'Home',
 
-    components: { AddDocumentModal, EditDocumentModal, BButton, DocumentThumb },
+    components: { AddDocumentModal, EditDocumentModal, BButton, BIcon, DocumentThumb },
 
     data () {
         return {
@@ -153,4 +156,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.search {
+    &__wrapper {
+        position: relative;
+    }
+
+    &__clear {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: $spacing-unit-24;
+        margin: auto;
+        font-size: 1.5em;
+    }
+}
 </style>

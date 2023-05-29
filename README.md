@@ -27,3 +27,11 @@ yarn dev           # Compiles and hot-reloads for development
 yarn build         # Compiles and minifies for production
 yarn lint --fix    # Lints and fixes files
 ```
+
+## Roadmap
+
+- add reset button to search field
+- fix ios preview
+- add tags
+- add top button
+- fix favicon

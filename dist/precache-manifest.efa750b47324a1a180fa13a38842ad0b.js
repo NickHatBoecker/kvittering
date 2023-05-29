@@ -4,8 +4,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kvittering/apple-touch-icon.png"
   },
   {
-    "revision": "8b59afe8a8eaa3246620",
-    "url": "/kvittering/css/app.eea3ec13.css"
+    "revision": "fef1c0e34e09937fb4f7",
+    "url": "/kvittering/css/app.2102b42f.css"
   },
   {
     "revision": "4a4800f782881a320e91",
@@ -32,12 +32,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kvittering/img/page-pattern.db4ff89e.png"
   },
   {
-    "revision": "0b04bff4297779918fd4afbebbef4388",
+    "revision": "fe70dae44371b471f3e2f1bd0799b9ac",
     "url": "/kvittering/index.html"
   },
   {
-    "revision": "8b59afe8a8eaa3246620",
-    "url": "/kvittering/js/app.0e930c4f.js"
+    "revision": "fef1c0e34e09937fb4f7",
+    "url": "/kvittering/js/app.5eb7f9a4.js"
   },
   {
     "revision": "4a4800f782881a320e91",
