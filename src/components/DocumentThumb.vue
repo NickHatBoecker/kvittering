@@ -165,6 +165,7 @@ export default {
 
         .view-overlay {
             display: none;
+            width: 100%;
             justify-content: center;
             align-items: center;
             background: rgba($secondary-color, 0.5);
