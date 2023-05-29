@@ -9,6 +9,7 @@ import 'vue-toast-notification/dist/theme-bootstrap.css'
 import VueDateFns from 'vue-date-fns'
 import { IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap-vue/dist/bootstrap-vue-icons.min.css'
+import VueScrollTo from 'vue-scroll-to'
 
 Vue.config.productionTip = false
 Vue.prototype.$appwrite = Appwrite
@@ -16,6 +17,7 @@ Vue.prototype.$appwrite = Appwrite
 Vue.use(ToastPlugin)
 Vue.use(VueDateFns)
 Vue.use(IconsPlugin)
+Vue.use(VueScrollTo)
 
 new Vue({
     router,

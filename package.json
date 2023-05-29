@@ -19,6 +19,7 @@
         "vue": "^2.6.11",
         "vue-date-fns": "^2.0.2",
         "vue-router": "^3.1.6",
+        "vue-scroll-to": "^2.2.1",
         "vue-toast-notification": "^1.0",
         "vuex": "^3.1.3"
     },

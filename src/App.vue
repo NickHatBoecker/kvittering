@@ -1,15 +1,21 @@
 <template>
     <div id="app" class="pb-100">
         <navbar />
-        <router-view/>
+
+        <div id="top">
+            <router-view/>
+        </div>
+
+        <top-button />
     </div>
 </template>
 
 <script>
 import Navbar from '@/components/ui/Navbar.vue'
+import TopButton from '@/components/TopButton.vue'
 
 export default {
-    components: { Navbar },
+    components: {TopButton, Navbar },
 }
 </script>
 
