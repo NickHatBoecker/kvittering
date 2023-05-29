@@ -32,5 +32,4 @@ yarn lint --fix    # Lints and fixes files
 
 - fix ios preview
 - add tags
-- add top button
 - fix favicon
