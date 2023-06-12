@@ -15,7 +15,7 @@ import Navbar from '@/components/ui/Navbar.vue'
 import TopButton from '@/components/TopButton.vue'
 
 export default {
-    components: {TopButton, Navbar },
+    components: { TopButton, Navbar },
 }
 </script>
 
